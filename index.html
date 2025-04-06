@@ -8,9 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-	<div class="logo-container">
-        <img src="images/yk-beats-logo.png" alt="YK Beats Logo" class="site-logo">
-    </div>
+	<link rel="stylesheet" href="css/style.css">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -61,40 +59,88 @@
             transform: translateY(-3px);
             color: #E60000;
         }
+		.hero-section {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #000, #0a0a0a);
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/yk-beats-logo.png'); /* update path if needed */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75%; /* Increase for a bigger logo */
+  opacity: 0.2; /* Increase for a brighter effect (try 0.15 or 0.2 if desired) */
+  pointer-events: none;
+  z-index: 0;
+}
     </style>
 </head>
-<body>
+<body class="w-full overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="flex justify-between items-center py-6 px-8 border-b border-gray-800">
-        <div class="flex items-center">
-            <h1 class="text-4xl font-bold yk-red">YK BEATS</h1>
-        </div>
-        <div class="hidden md:flex space-x-8">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#beats" class="nav-link">Beats</a>
-            <a href="#videos" class="nav-link">Videos</a>
-            <a href="#shop" class="nav-link">Shop</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
-    </nav>
-
+<nav id="main-nav" class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 w-full relative transition-transform duration-300 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-">
+    <div class="logo-container">
+	<a href="#home" class="hover:opacity-80 transition duration-300">
+        <img src="images/yk-beats-logo-resized.png" alt="YK Beats Logo" width="140" height="auto" class="site-logo object-contain h-20">
+		</a>
+    </div>
+    <div class="hidden md:flex space-x-8">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#beats" class="nav-link">Beats</a>
+      <a href="#videos" class="nav-link">Videos</a>
+      <a href="#shop" class="nav-link">Shop</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </div>
+</nav>
     <!-- Hero Section -->
-    <section id="home" class="py-16 px-8 flex flex-col items-center">
-        <div class="text-center mb-10">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">PROBBY.<span class="yk-red">YK</span></h1>
-            <div class="waveform w-full max-w-3xl mx-auto mb-8"></div>
-            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">Creating hard-hitting beats for artists worldwide. Premium production with a unique sound.</p>
-        </div>
-        <div class="mt-8">
-            <a href="#beats" class="yk-bg-red px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">LISTEN NOW</a>
-        </div>
-    </section>
+    <section id="home" class="hero-section py-16 px-8 flex flex-col items-center justify-center text-center">
+  <div class="relative z-10">
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-4">
+      ProdBy.<span class="yk-red">Yk</span>
+    </h1>
+  
+    <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
+      Creating hard-hitting beats for artists worldwide. Premium production with a unique sound.
+    </p>
+    <div class="mt-8">
+      <a href="#beats" class="yk-bg-red px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">
+        LISTEN NOW
+      </a>
+    </div>
+  </div>
+</section>
+
 
     <!-- Latest Release -->
     <section class="py-16 px-8 bg-gray-900">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">NEW RELEASE</h2>
             <div class="flex flex-col md:flex-row items-center">
+			<div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+    <div class="rounded-lg overflow-hidden shadow-2xl border-4 border-red-900">
+        <iframe 
+            class="w-full h-64 md:h-80" 
+            src="https://youtu.be/6Pq6b3Ialc0" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
                 <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
                     <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden shadow-2xl">
                         <div class="relative w-full h-0 pb-[56.25%]">
@@ -111,8 +157,10 @@
                         </div>
                     </div>
                 </div>
+</div>
+
                 <div class="md:w-1/2">
-                    <h3 class="text-2xl md:text-3xl font-bold mb-4">MIDNIGHT DRIVE</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Dirty Mirror</h3>
                     <p class="text-gray-400 mb-6">The latest beat collection featuring atmospheric trap melodies and hard-hitting 808s. Perfect for modern hip-hop artists.</p>
                     <div class="flex flex-wrap gap-3 mb-8">
                         <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Trap</span>
@@ -124,9 +172,10 @@
                         <a href="#" class="px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
                             <i class="fab fa-spotify mr-2"></i> Spotify
                         </a>
-                        <a href="#" class="px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
-                            <i class="fab fa-youtube mr-2"></i> YouTube
-                        </a>
+                        <a href="https://youtu.be/6Pq6b3Ialc0" target="_blank" rel="noopener noreferrer" class="px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
+    <i class="fab fa-youtube mr-2"></i> YouTube
+</a>
+
                         <a href="#" class="px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
                             <i class="fas fa-shopping-cart mr-2"></i> Purchase
                         </a>
@@ -145,15 +194,18 @@
                 <div class="beat-card bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                     <div class="h-40 bg-gradient-to-r from-red-900 to-black flex items-center justify-center">
                         <div class="waveform w-3/4 h-24"></div>
-                        <button class="absolute yk-bg-red p-3 rounded-full">
-                            <i class="fas fa-play"></i>
-                        </button>
+                        <a href="https://youtu.be/1AtZGFmifEc" 
+   class="absolute youtube-lightbox yk-bg-red p-4 rounded-full transform transition-all duration-300 hover:scale-110 hover:shadow-xl hover:ring-2 hover:ring-red-500"
+   title="Watch Video">
+  <i class="fas fa-play text-white text-lg animate-pulse"></i>
+</a>
+
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Night Rider</h3>
+                        <h3 class="text-xl font-bold mb-2">Str8 Vybz (Vybz Kartel) </h3>
                         <div class="flex justify-between text-gray-400 text-sm mb-3">
-                            <span>Trap / Hip-Hop</span>
-                            <span>145 BPM</span>
+                            <span>DanceHall / Trap</span>
+                            <span>100 BPM</span>
                         </div>
                         <div class="waveform w-full h-12 mb-4"></div>
                         <div class="flex justify-between items-center">
@@ -174,14 +226,16 @@
                 <div class="beat-card bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                     <div class="h-40 bg-gradient-to-r from-red-900 to-black flex items-center justify-center">
                         <div class="waveform w-3/4 h-24"></div>
-                        <button class="absolute yk-bg-red p-3 rounded-full">
-                            <i class="fas fa-play"></i>
-                        </button>
+                        <a href="https://youtu.be/gjJEd307xxo" target="_blank" rel="noopener noreferrer"
+   class="absolute youtube-lightbox yk-bg-red p-4 rounded-full transform transition-all duration-300 hover:scale-110 hover:shadow-xl hover:ring-2 hover:ring-red-500"
+   title="Watch Video">
+  <i class="fas fa-play text-white text-lg animate-pulse"></i>
+</a>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">City Lights</h3>
+                        <h3 class="text-xl font-bold mb-2">Amout (Vybz Kartel)</h3>
                         <div class="flex justify-between text-gray-400 text-sm mb-3">
-                            <span>R&B / Melodic</span>
+                            <span>DanceHall / Trap</span>
                             <span>90 BPM</span>
                         </div>
                         <div class="waveform w-full h-12 mb-4"></div>
@@ -203,15 +257,17 @@
                 <div class="beat-card bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                     <div class="h-40 bg-gradient-to-r from-red-900 to-black flex items-center justify-center">
                         <div class="waveform w-3/4 h-24"></div>
-                        <button class="absolute yk-bg-red p-3 rounded-full">
-                            <i class="fas fa-play"></i>
-                        </button>
+                        <a href="https://youtu.be/AwhZ94oLYSk" target="_blank" rel="noopener noreferrer"
+   class="absolute youtube-lightbox yk-bg-red p-4 rounded-full transform transition-all duration-300 hover:scale-110 hover:shadow-xl hover:ring-2 hover:ring-red-500"
+   title="Watch Video">
+  <i class="fas fa-play text-white text-lg animate-pulse"></i>
+</a>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Savage Mode</h3>
+                        <h3 class="text-xl font-bold mb-2">Menace (Squash) </h3>
                         <div class="flex justify-between text-gray-400 text-sm mb-3">
-                            <span>Drill / Trap</span>
-                            <span>140 BPM</span>
+                            <span>Dancehall / Trap</span>
+                            <span>100 BPM</span>
                         </div>
                         <div class="waveform w-full h-12 mb-4"></div>
                         <div class="flex justify-between items-center">
@@ -657,5 +713,42 @@
             });
         });
     </script>
+	<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.getElementById('main-nav');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function onScroll() {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scroll down → hide nav
+                nav.classList.add('hide-nav');
+            } else {
+                // Scroll up → show nav
+                nav.classList.remove('hide-nav');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(onScroll);
+                ticking = true;
+            }
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+<script>
+  const lightbox = GLightbox({
+    selector: '.youtube-lightbox'
+  });
+</script>
+
 </body>
 </html>
