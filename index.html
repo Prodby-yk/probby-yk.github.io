@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProbBy.Yk - Official Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        .yk-red {
+            color: #E60000;
+        }
+        .yk-bg-red {
+            background-color: #E60000;
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #E60000;
+        }
+        .beat-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .beat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(230, 0, 0, 0.3);
+        }
+        .waveform {
+            height: 60px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSI2MHB4IiB2aWV3Qm94PSIwIDAgMTIwMCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIj48cGF0aCBkPSJNMCA0OCBMNiA0OCBMOCA1MiBMMTAgNDggTDE0IDQ4IEwxNiA0MyBMMTggNDggTDIyIDQ4IEwyNCA0MiBMMjYgNDggTDMwIDQ4IEwzMiAzNiBMMzQgNDggTDM4IDQ4IEw0MCAzMCBMNDIgNDggTDQ2IDQ4IEw0OCAzNiBMNTAgNDggTDU0IDQ4IEw1NiA0MiBMNTggNDggTDYyIDQ4IEw2NCA0MyBMNjYgNDggTDcwIDQ4IEw3MiA1MiBMNzQgNDggTDc4IDQ4IEw4MCA1MiBMODIgNDggTDg2IDQ4IEw4OCA0MyBMOTAgNDggTDk0IDQ4IEw5NiA0MiBMOTggNDggTDEwMiA0OCBMMTAzIDM2IEwxMDcgNDggTDExMSA0OCBMMTEzIDMwIEwxMTUgNDggTDExOSA0OCBMMTIxIDM2IEwxMjMgNDggTDEyNyA0OCBMMTMyIDQ1IEwxMzQgNDggTDEzOCA0OCBMMTQwIDM2IEwxNDIgNDggTDE0NiA0OCBMMTUwIDM2IEwxNTIgNDggTDE1NiA0OCBMMTYwIDQyIEwxNjIgNDggTDE2NiA0OCBMMTcwIDM2IEwxNzIgNDggTDE3NiA0OCBMMTgwIDQyIEwxODIgNDggTDE4NiA0OCBMMTkwIDM2IEwxOTIgNDggTDE5NiA0OCBMMjAwIDQyIEwyMDIgNDggTDIwNiA0OCBMMjEwIDM2IEwyMTIgNDggTDIxNiA0OCBMMjIwIDQyIEwyMjIgNDggTDIyNiA0OCBMMjMwIDM2IEwyMzIgNDggTDIzNiA0OCBMMjQwIDQyIEwyNDIgNDggTDI0NiA0OCBMMjUwIDM2IEwyNTIgNDggTDI1NiA0OCBMMjYwIDQyIEwyNjIgNDggTDI2NiA0OCBMMjcwIDM2IEwyNzIgNDggTDI3NiA0OCBMMjgwIDQyIEwyODIgNDggTDI4NiA0OCBMMjkwIDI0IEwyOTIgNDggTDI5NiA0OCBMMzAwIDQyIEwzMDIgNDggTDMwNiA0OCBMMzEwIDM2IEwzMTIgNDggTDMxNiA0OCBMMzIwIDQyIEwzMjIgNDggTDMyNiA0OCBMMzMwIDM2IEwzMzIgNDggTDMzNiA0OCBMMzQwIDQyIEwzNDIgNDggTDM0NiA0OCBMMzUwIDM2IEwzNTIgNDggTDM1NiA0OCBMMzYwIDQyIEwzNjIgNDggTDM2NiA0OCBMMzcwIDM2IEwzNzIgNDggTDM3NiA0OCBMMzgwIDQyIEwzODIgNDggTDM4NiA0OCBMMzg5IDM2IEwzOTIgNDggTDM5NiA0OCBMMzk4IDQzIEw0MDAgNDggTDQwNCA0OCBMNDEwIDUyIEw0MTIgNDggTDQxNiA0OCBMNDIwIDQzIEw0MjIgNDggTDQyNiA0OCBMNDMwIDQyIEw0MzIgNDggTDQzNiA0OCBMNDQwIDI0IEw0NDIgNDggTDQ0NiA0OCBMNDUwIDQyIEw0NTIgNDggTDQ1NiA0OCBMNDYwIDQzIEw0NjIgNDggTDQ2NiA0OCBMNDcwIDQyIEw0NzIgNDggTDQ3NiA0OCBMNDgwIDM2IEw0ODIgNDggTDQ4NiA0OCBMNDkyIDMwIEw0OTQgNDggTDQ5OCA0OCBMNTAwIDM2IEw1MDIgNDggTDUwNiA0OCBMNTEwIDQyIEw1MTIgNDggTDUxNiA0OCBMNTIwIDQzIEw1MjIgNDggTDUyNiA0OCBMNTMyIDUyIEw1MzQgNDggTDUzOCA0OCBMNTQwIDQzIEw1NDIgNDggTDU0NiA0OCBMNTUwIDQyIEw1NTIgNDggTDU1NiA0OCBMNTYwIDM2IEw1NjIgNDggTDU2NiA0OCBMNTcwIDMwIEw1NzIgNDggTDU3NiA0OCBMNTgwIDM2IEw1ODIgNDggTDU4NiA0OCBMNTkwIDQyIEw1OTIgNDggTDU5NiA0OCBMNjAwIDQzIEw2MDIgNDggTDYwNiA0OCBMNjEwIDUyIEw2MTIgNDggTDYxNiA0OCBMNjIwIDQzIEw2MjIgNDggTDYyNiA0OCBMNjMwIDQyIEw2MzIgNDggTDYzNiA0OCBMNjQyIDI0IEw2NDQgNDggTDY0OCA0OCBMNjUwIDQyIEw2NTIgNDggTDY1NiA0OCBMNjYwIDM2IEw2NjIgNDggTDY2NiA0OCBMNjcwIDQzIEw2NzIgNDggTDY3NiA0OCBMNjgwIDUyIEw2ODIgNDggTDY4NiA0OCBMNjkwIDQzIEw2OTIgNDggTDY5NiA0OCBMNzAwIDQyIEw3MDIgNDggTDcwNiA0OCBMNzEwIDI0IEw3MTIgNDggTDcxNiA0OCBMNzIwIDQyIEw3MjIgNDggTDcyNiA0OCBMNzMwIDM2IEw3MzIgNDggTDczNiA0OCBMNzQwIDMwIEw3NDIgNDggTDc0NiA0OCBMNzUwIDM2IEw3NTIgNDggTDc1NiA0OCBMNzYwIDQyIEw3NjIgNDggTDc2NiA0OCBMNzcwIDQzIEw3NzIgNDggTDc3NiA0OCBMNzgyIDUyIEw3ODQgNDggTDc4OCA0OCBMNzkwIDQzIEw3OTIgNDggTDc5NiA0OCBMODAwIDQyIEw4MDIgNDggTDgwNiA0OCBMODEyIDM2IEw4MTQgNDggTDgxOCA0OCBMODIwIDQyIEw4MjIgNDggTDgyNiA0OCBMODMwIDM2IEw4MzIgNDggTDgzNiA0OCBMODQwIDQzIEw4NDIgNDggTDg0NiA0OCBMODUwIDUyIEw4NTIgNDggTDg1NiA0OCBMODYwIDQzIEw4NjIgNDggTDg2NiA0OCBMODcwIDQyIEw4NzIgNDggTDg3NiA0OCBMODgwIDI0IEw4ODIgNDggTDg4NiA0OCBMODkwIDQyIEw4OTIgNDggTDg5NiA0OCBMOTAwIDM2IEw5MDIgNDggTDkwNiA0OCBMOTEwIDMwIEw5MTIgNDggTDkxNiA0OCBMOTIwIDM2IEw5MjIgNDggTDkyNiA0OCBMOTMwIDQyIEw5MzIgNDggTDkzNiA0OCBMOTQwIDQzIEw5NDIgNDggTDk0NiA0OCBMOTUwIDUyIEw5NTIgNDggTDk1NiA0OCBMOTYwIDQzIEw5NjIgNDggTDk2NiA0OCBMOTcwIDQyIEw5NzIgNDggTDk3NiA0OCBMOTgyIDI0IEw5ODQgNDggTDk4OCA0OCBMOTkwIDQyIEw5OTIgNDggTDk5NiA0OCBMMTAwMCAzNiBMMTAwMiA0OCBMMTAwNiA0OCBMMTAxMCA0MyBMMTAxMiA0OCBMMTAxNiA0OCBMMTAyMCA1MiBMMTAyMiA0OCBMMTAyNiA0OCBMMTAzMCA0MyBMMTAzMiA0OCBMMTAzNiA0OCBMMTA0MCA0MiBMMTA0MiA0OCBMMTA0NiA0OCBMMTEwMiA0OCBMMTEwNCA1MiBMMTEwNiA0OCBMMTExMCA0OCBMMTExMiA0MyBMMTExNCA0OCBMMTExOCA0OCBMMTEyMCA0MiBMMTEyMiA0OCBMMTEyNiA0OCBMMTEyOCAzNiBMMTEzMCA0OCBMMTEzNCA0OCBMMTEzNiAzMCBMMTEzOCA0OCBMMTE0MiA0OCBMMTExNDQgMzYgTDExNDYgNDggTDExNTAgNDggTDExNTIgNDIgTDExNTQgNDggTDExNTggNDggTDExNjAgNDMgTDExNjIgNDggTDExNjYgNDggTDExNjggNTIgTDExNzAgNDggTDExNzQgNDggTDExNzYgNTIgTDExNzggNDggTDExODIgNDggTDExODQgNDMgTDExODYgNDggTDExOTAgNDggTDExOTIgNDIgTDExOTQgNDggTDExOTggNDgiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjgiLz48L2c+PC9zdmc+');
+            background-repeat: repeat-x;
+            opacity: 0.7;
+        }
+        .section-heading {
+            border-bottom: 2px solid #E60000;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        .custom-video-player {
+            width: 100%;
+            border: 2px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .social-icon {
+            transition: transform 0.3s, color 0.3s;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #E60000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center py-6 px-8 border-b border-gray-800">
+        <div class="flex items-center">
+            <h1 class="text-4xl font-bold yk-red">YK BEATS</h1>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#beats" class="nav-link">Beats</a>
+            <a href="#videos" class="nav-link">Videos</a>
+            <a href="#shop" class="nav-link">Shop</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-16 px-8 flex flex-col items-center">
+        <div class="text-center mb-10">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">PROBBY.<span class="yk-red">YK</span></h1>
+            <div class="waveform w-full max-w-3xl mx-auto mb-8"></div>
+            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">Creating hard-hitting beats for artists worldwide. Premium production with a unique sound.</p>
+        </div>
+        <div class="mt-8">
+            <a href="#beats" class="yk-bg-red px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">LISTEN NOW</a>
+        </div>
+    </section>
+
+    <!-- Latest Release -->
+    <section class="py-16 px-8 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">NEW RELEASE</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden shadow-2xl">
+                        <div class="relative w-full h-0 pb-[56.25%]">
+                            <div class="absolute inset-0 bg-gradient-to-br from-red-900 to-black flex items-center justify-center">
+                                <div class="text-center">
+                                    <h3 class="text-2xl md:text-3xl font-bold mb-3">"MIDNIGHT DRIVE"</h3>
+                                    <p class="text-gray-400 mb-6">Trap Beat Collection</p>
+                                    <div class="waveform w-3/4 mx-auto mb-4"></div>
+                                    <button class="yk-bg-red px-6 py-2 rounded-full font-bold hover:bg-red-700 transition">
+                                        <i class="fas fa-play mr-2"></i> PLAY
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">MIDNIGHT DRIVE</h3>
+                    <p class="text-gray-400 mb-6">The latest beat collection featuring atmospheric trap melodies and hard-hitting 808s. Perfect for modern hip-hop artists.</p>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Trap</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Hip-Hop</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Dark</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">140 BPM</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
+                            <i class="fab fa-spotify mr-2"></i> Spotify
+                        </a>
+                        <a href="#" class="px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
+                            <i class="fab fa-youtube mr-2"></i> YouTube
+                        </a>
+                        <a href="#" class="px-6 py-2 bg-gray-800 rounded-full hover:bg-gray-700 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Purchase
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beats Section -->
+    <section id="beats" class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">POPULAR BEATS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Beat Card 1 -->
+                <div class="beat-card bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-40 bg-gradient-to-r from-red-900 to-black flex items-center justify-center">
+                        <div class="waveform w-3/4 h-24"></div>
+                        <button class="absolute yk-bg-red p-3 rounded-full">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Night Rider</h3>
+                        <div class="flex justify-between text-gray-400 text-sm mb-3">
+                            <span>Trap / Hip-Hop</span>
+                            <span>145 BPM</span>
+                        </div>
+                        <div class="waveform w-full h-12 mb-4"></div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$39.99</span>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 bg-gray-800 rounded hover:bg-gray-700 transition">
+                                    <i class="fas fa-headphones"></i>
+                                </button>
+                                <button class="px-3 py-1 yk-bg-red rounded hover:bg-red-700 transition">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beat Card 2 -->
+                <div class="beat-card bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-40 bg-gradient-to-r from-red-900 to-black flex items-center justify-center">
+                        <div class="waveform w-3/4 h-24"></div>
+                        <button class="absolute yk-bg-red p-3 rounded-full">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">City Lights</h3>
+                        <div class="flex justify-between text-gray-400 text-sm mb-3">
+                            <span>R&B / Melodic</span>
+                            <span>90 BPM</span>
+                        </div>
+                        <div class="waveform w-full h-12 mb-4"></div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$49.99</span>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 bg-gray-800 rounded hover:bg-gray-700 transition">
+                                    <i class="fas fa-headphones"></i>
+                                </button>
+                                <button class="px-3 py-1 yk-bg-red rounded hover:bg-red-700 transition">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beat Card 3 -->
+                <div class="beat-card bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-40 bg-gradient-to-r from-red-900 to-black flex items-center justify-center">
+                        <div class="waveform w-3/4 h-24"></div>
+                        <button class="absolute yk-bg-red p-3 rounded-full">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Savage Mode</h3>
+                        <div class="flex justify-between text-gray-400 text-sm mb-3">
+                            <span>Drill / Trap</span>
+                            <span>140 BPM</span>
+                        </div>
+                        <div class="waveform w-full h-12 mb-4"></div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$59.99</span>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 bg-gray-800 rounded hover:bg-gray-700 transition">
+                                    <i class="fas fa-headphones"></i>
+                                </button>
+                                <button class="px-3 py-1 yk-bg-red rounded hover:bg-red-700 transition">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="yk-bg-red px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">
+                    VIEW ALL BEATS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beat Packages -->
+    <section class="py-16 px-8 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">BEAT PACKAGES</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Package -->
+                <div class="bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-red-900 transition duration-300">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">BASIC LICENSE</h3>
+                        <p class="text-gray-400 mb-6">Perfect for indie artists and online use</p>
+                        <h4 class="text-4xl font-bold mb-6">$29.99</h4>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>MP3 File</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>5,000 Streams</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>Non-Exclusive</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>1 Music Video</span>
+                            </li>
+                        </ul>
+                        <button class="w-full py-3 bg-gray-800 rounded-full font-bold hover:bg-red-900 transition">
+                            GET STARTED
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="bg-black rounded-lg overflow-hidden border border-red-900 transform scale-105 shadow-2xl relative">
+                    <div class="absolute top-0 w-full bg-red-900 text-center py-1 font-bold">
+                        MOST POPULAR
+                    </div>
+                    <div class="p-8 pt-12">
+                        <h3 class="text-2xl font-bold mb-4">PREMIUM LICENSE</h3>
+                        <p class="text-gray-400 mb-6">For serious artists ready to grow</p>
+                        <h4 class="text-4xl font-bold mb-6">$59.99</h4>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>WAV + MP3 Files</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>Unlimited Streams</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>Radio Distribution</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>3 Music Videos</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>Trackout Files</span>
+                            </li>
+                        </ul>
+                        <button class="w-full py-3 yk-bg-red rounded-full font-bold hover:bg-red-700 transition">
+                            GET STARTED
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exclusive Package -->
+                <div class="bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-red-900 transition duration-300">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">EXCLUSIVE LICENSE</h3>
+                        <p class="text-gray-400 mb-6">Full ownership of the beat</p>
+                        <h4 class="text-4xl font-bold mb-6">$299.99</h4>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>Full Exclusive Rights</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>All Stem Files</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>Unlimited Everything</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>Producer Credit</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check yk-red mr-2"></i>
+                                <span>Beat Removed From Store</span>
+                            </li>
+                        </ul>
+                        <button class="w-full py-3 bg-gray-800 rounded-full font-bold hover:bg-red-900 transition">
+                            GET STARTED
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="videos" class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">VIDEOS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Video 1 -->
+                <div>
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                        <div class="custom-video-player h-80 bg-gradient-to-r from-red-900 to-black flex items-center justify-center relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="yk-bg-red p-4 rounded-full">
+                                    <i class="fas fa-play text-xl"></i>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="text-xl font-bold">Studio Session: Making the "Night Rider" Beat</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">Watch how I created the hard-hitting "Night Rider" beat from scratch using Ableton Live.</p>
+                </div>
+                
+                <!-- Video 2 -->
+                <div>
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                        <div class="custom-video-player h-80 bg-gradient-to-r from-red-900 to-black flex items-center justify-center relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="yk-bg-red p-4 rounded-full">
+                                    <i class="fas fa-play text-xl"></i>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="text-xl font-bold">Tutorial: How to Create 808 Patterns</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">Learn my techniques for creating dynamic and hard-hitting 808 patterns for trap beats.</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="#" class="inline-flex items-center space-x-2 text-lg">
+                    <span>View more on YouTube</span>
+                    <i class="fab fa-youtube yk-red text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merch Shop Section -->
+    <section id="shop" class="py-16 px-8 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">SHOP</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Merch Item 1 -->
+                <div class="bg-black rounded-lg overflow-hidden hover:shadow-xl transition">
+                    <div class="h-60 bg-gradient-to-br from-red-900 to-black flex items-center justify-center">
+                        <h3 class="text-xl font-bold">YK BEATS Hoodie</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$59.99</span>
+                            <button class="px-3 py-1 yk-bg-red rounded hover:bg-red-700 transition">
+                                BUY NOW
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merch Item 2 -->
+                <div class="bg-black rounded-lg overflow-hidden hover:shadow-xl transition">
+                    <div class="h-60 bg-gradient-to-br from-red-900 to-black flex items-center justify-center">
+                        <h3 class="text-xl font-bold">Producer Cap</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$29.99</span>
+                            <button class="px-3 py-1 yk-bg-red rounded hover:bg-red-700 transition">
+                                BUY NOW
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merch Item 3 -->
+                <div class="bg-black rounded-lg overflow-hidden hover:shadow-xl transition">
+                    <div class="h-60 bg-gradient-to-br from-red-900 to-black flex items-center justify-center">
+                        <h3 class="text-xl font-bold">YK Drum Kit Vol.1</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$49.99</span>
+                            <button class="px-3 py-1 yk-bg-red rounded hover:bg-red-700 transition">
+                                BUY NOW
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merch Item 4 -->
+                <div class="bg-black rounded-lg overflow-hidden hover:shadow-xl transition">
+                    <div class="h-60 bg-gradient-to-br from-red-900 to-black flex items-center justify-center">
+                        <h3 class="text-xl font-bold">YK BEATS T-Shirt</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$24.99</span>
+                            <button class="px-3 py-1 yk-bg-red rounded hover:bg-red-700 transition">
+                                BUY NOW
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="yk-bg-red px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">
+                    VIEW ALL MERCH
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">WHAT ARTISTS SAY</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-red-700 to-red-900 flex items-center justify-center font-bold text-xl">
+                            M
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">MartianBeats</h4>
+                            <p class="text-gray-400 text-sm">Hip-Hop Artist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"YK's beats are on another level. The 808s hit exactly how I want them to and the melodies are unique. I've used his beats on my last two projects."</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-red-700 to-red-900 flex items-center justify-center font-bold text-xl">
+                            S
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">SkyHighMusic</h4>
+                            <p class="text-gray-400 text-sm">R&B Producer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"The quality of the beats I get from ProbBy.YK is consistent. Clean mixes, room for vocals, and the stem files are perfectly organized."</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-red-700 to-red-900 flex items-center justify-center font-bold text-xl">
+                            V
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">VerseVibe</h4>
+                            <p class="text-gray-400 text-sm">Rapper</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"I've worked with many producers, but YK understands the vibe I'm going for instantly. Professional service and top-tier beats every time."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-8 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">CONTACT</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">GET IN TOUCH</h3>
+                    <p class="text-gray-400 mb-8">Looking for custom beats? Want to discuss a collaboration? Reach out and let's make something great together.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="far fa-envelope yk-red text-xl w-8"></i>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-400"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd8d4d5cfdad8cffbc2d0d9dedacfc895d8d4d6">[email&#160;protected]</a></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fab fa-youtube yk-red text-xl w-8"></i>
+                            <div>
+                                <h4 class="font-bold">YouTube</h4>
+                                <p class="text-gray-400">YK Beats</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fab fa-instagram yk-red text-xl w-8"></i>
+                            <div>
+                                <h4 class="font-bold">Instagram</h4>
+                                <p class="text-gray-400">@probby.yk</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block mb-2 font-medium" for="name">Name</label>
+                            <input type="text" id="name" class="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-medium" for="email">Email</label>
+                            <input type="email" id="email" class="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-medium" for="message">Message</label>
+                            <textarea id="message" rows="5" class="w-full p-3 bg-black border border-gray-700 rounded-lg focus:border-red-500 focus:outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="yk-bg-red px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">
+                            SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="py-16 px-8">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 section-heading">FOLLOW YK BEATS</h2>
+            <div class="flex justify-center space-x-8 mb-12">
+                <a href="#" class="text-3xl social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="text-3xl social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-3xl social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-3xl social-icon">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="text-3xl social-icon">
+                    <i class="fab fa-soundcloud"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Instagram-like post 1 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-red-900 to-black"></div>
+                </div>
+                <!-- Instagram-like post 2 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-red-900 to-black"></div>
+                </div>
+                <!-- Instagram-like post 3 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-red-900 to-black"></div>
+                </div>
+                <!-- Instagram-like post 4 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-red-900 to-black"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-8 bg-black border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <h2 class="text-3xl font-bold yk-red">YK BEATS</h2>
+                    <p class="text-gray-500 mt-2">© 2023 YK Beats. All Rights Reserved.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#beats" class="nav-link">Beats</a>
+                    <a href="#videos" class="nav-link">Videos</a>
+                    <a href="#shop" class="nav-link">Shop</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
+                <p>Designed with 🔥 for ProbBy.Yk</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add play button functionality (demo only - would need actual audio player implementation)
+            const playButtons = document.querySelectorAll('.fa-play');
+            playButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Audio player would start here in a real implementation.');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
