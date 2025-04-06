@@ -8,9 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-	<div class="logo-container">
-        <img src="images/yk-beats-logo.png" alt="YK Beats Logo" width="200" height="auto" class="site-logo">
-    </div>
+	<link rel="stylesheet" href="css/style.css">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -61,35 +59,52 @@
             transform: translateY(-3px);
             color: #E60000;
         }
+		.hero-bg {
+  background-image: url('images/yk-beats-logo.png.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.05; /* Light tint */
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+		  #main-nav.hide-nav {
+  transform: translateY(-100%);
+}
     </style>
 </head>
-<body>
+<body class="w-full overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="flex justify-between items-center py-6 px-8 border-b border-gray-800">
-        <div class="flex items-center">
-            <h1 class="text-4xl font-bold yk-red">YK BEATS</h1>
-        </div>
-        <div class="hidden md:flex space-x-8">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#beats" class="nav-link">Beats</a>
-            <a href="#videos" class="nav-link">Videos</a>
-            <a href="#shop" class="nav-link">Shop</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
-    </nav>
-
+<nav id="main-nav" class="sticky top-0 z-50 bg-black w-full relative transition-transform duration-300">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-6">
+    <h1 class="text-4xl font-bold yk-red">YK BEATS</h1>
+    <div class="hidden md:flex space-x-8">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#beats" class="nav-link">Beats</a>
+      <a href="#videos" class="nav-link">Videos</a>
+      <a href="#shop" class="nav-link">Shop</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </div>
+</nav>
     <!-- Hero Section -->
-    <section id="home" class="py-16 px-8 flex flex-col items-center">
-        <div class="text-center mb-10">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">PROBBY.<span class="yk-red">YK</span></h1>
-            <div class="waveform w-full max-w-3xl mx-auto mb-8"></div>
-            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">Creating hard-hitting beats for artists worldwide. Premium production with a unique sound.</p>
-        </div>
-        <div class="mt-8">
-            <a href="#beats" class="yk-bg-red px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">LISTEN NOW</a>
-        </div>
-    </section>
+    <section id="home" class="py-16 px-8 flex flex-col items-center relative overflow-hidden">
+    <div class="hero-bg"></div> <!-- background logo -->
 
+    <div class="text-center mb-10 relative z-10">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-4">PROBBY.<span class="yk-red">YK</span></h1>
+        <div class="waveform w-full max-w-3xl mx-auto mb-8"></div>
+        <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
+            Creating hard-hitting beats for artists worldwide. Premium production with a unique sound.
+        </p>
+    </div>
+    <div class="mt-8 relative z-10">
+        <a href="#beats" class="yk-bg-red px-8 py-3 rounded-full font-bold hover:bg-red-700 transition">LISTEN NOW</a>
+    </div>
+</section>
     <!-- Latest Release -->
     <section class="py-16 px-8 bg-gray-900">
         <div class="max-w-6xl mx-auto">
@@ -657,5 +672,34 @@
             });
         });
     </script>
+	<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.getElementById('main-nav');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function onScroll() {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scroll down → hide nav
+                nav.classList.add('hide-nav');
+            } else {
+                // Scroll up → show nav
+                nav.classList.remove('hide-nav');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(onScroll);
+                ticking = true;
+            }
+        });
+    });
+</script>
 </body>
 </html>
